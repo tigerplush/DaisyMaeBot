@@ -14,6 +14,11 @@ module.exports =
 
         //Search for author
         let seller = sellers.find(price => price.owner == message.author)
+        if(! /^\+?[1-9]\d*$/.test(args[0]))
+        {
+            message.reply("Please enter a valid price :slight_frown:");
+            return;
+        }
         if(seller)
         {
             // the author already exists
