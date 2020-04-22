@@ -1,6 +1,6 @@
 module.exports =
 {
-    name: "set",
+    name: "sell",
     usage: "turnip-price",
     description: "Sets your current turnip price",
     execute(message, args)

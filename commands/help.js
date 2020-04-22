@@ -14,7 +14,7 @@ module.exports =
         {
             answer += this.name + "`\n" + this.description + "\n";
             answer += "Available commands: `" + prefix + commands.map(command => command.name).join('`, `' + prefix) + "`\n";
-            answer += "Set your turnip price with `" + prefix + commands.get("set").name + " price`\n";
+            answer += "Set your turnip price with `" + prefix + commands.get("sell").name + " <price>`\n";
             answer += "Delete yourself from the list of sellers with `" + prefix + commands.get("reset").name + "`\n";
             answer += "Get more info with `" + prefix +"help <command>`";
         }
