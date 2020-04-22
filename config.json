@@ -1,0 +1,14 @@
+{
+    "prefix": "!daisy ",
+    "sellerpost": "This is the seller post.",
+    "servers": [
+        {
+            "guildid": "575030619747385345",
+            "channelid": "702477339090747392"
+        },
+        {
+            "guildid": "",
+            "channelid": "702486756481695834"
+        }
+    ]
+}

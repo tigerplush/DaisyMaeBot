@@ -1,0 +1,11 @@
+{
+  "name": "Daisy Mae",
+  "version": "1.0.0",
+  "description": "This is a discord bot for managing turnip prices",
+  "main": "daisymae.js",
+  "author": "Christopher 'Tiger' Putz",
+  "github": "https://github.com/tigerplush/DaisyMaeBot/issues",
+  "dependencies": {
+    "discord.js": "^12.2.0"
+  }
+}
