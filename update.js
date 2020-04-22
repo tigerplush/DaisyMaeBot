@@ -20,7 +20,7 @@ module.exports =
             sellers.sort(function(a, b){
                 return b.price-a.price
             });
-            content += "Seller:";
+            content += "Active sellers:";
             sellers.forEach(seller => {
                 content += "\n<@" + seller.owner.id + "> with " + seller.price + " bells per turnip";
             });
