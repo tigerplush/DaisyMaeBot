@@ -19,7 +19,7 @@ module.exports =
         }
         
         //Search for author        
-        const {sellers} = message.client;
+        const sellers = message.client.sellers.get(message.guild.id);
         let seller = sellers.find(price => price.owner == message.author)
         if(seller)
         {
@@ -38,6 +38,6 @@ module.exports =
             message.reply("I added you to the list of sellers");
         }
 
-        message.client.emit('priceUpdate', message.client);
+        message.client.emit('priceUpdate', message.guild.id);
     },
 };

@@ -1,13 +1,23 @@
+const Discord = require('discord.js');
 const {sellerpost} = require('./config.json');
 module.exports =
 {
     name: "update",
     usage: "",
     description: "Updates the best seller post",
-    execute(client)
+    execute(info)
     {        
-        const {post, sellers, buyers} = client;
-                
+        const {client, guildid} = info;
+        const {posts} = client;
+
+        if(!client.sellers.has(guildid) || !client.buyers.has(guildid))
+        {
+            //if there is no current guild config'd
+            return;
+        }
+
+        const sellers = client.sellers.get(guildid);
+
         let content = sellerpost + "\n";
         if(!sellers || sellers.length == 0)
         {
@@ -28,6 +38,7 @@ module.exports =
 
         content += "\n";
 
+        const buyers = client.buyers.get(guildid);
         if(!buyers || buyers.length == 0)
         {
             content += "There are no active buyers :frowning2:";
@@ -45,7 +56,9 @@ module.exports =
             });
         }
 
-        post.edit(content);
-
+        if(posts.has(guildid))
+        {
+            posts.get(guildid).edit(content)
+        }
     },
 };

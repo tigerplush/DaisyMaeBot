@@ -1,4 +1,5 @@
 const {sellerpost, servers} = require('./config.json');
+const Discord = require('discord.js');
 
 module.exports =
 {
@@ -7,6 +8,11 @@ module.exports =
     description: "Initialises the best seller post",
     async execute(client)
     {
+        let {posts, sellers, buyers} = client;
+        // client.posts = new Discord.Collection();
+        // client.sellers = new Discord.Collection();
+        // client.buyers = new Discord.Collection();
+
         for(const server of servers)
         {
             if(client.channels.cache.has(server.channelid))
@@ -17,21 +23,21 @@ module.exports =
                 if(pinnedMessages)
                 {
                     //there is one
-                    const pin = pinnedMessages.find(message => message.author === client.user);
-                    if(pin)
+                    //find post by Daisy Mae
+                    let post = pinnedMessages.find(message => message.author === client.user);
+                    if(!post)
                     {
-                        client.post = pin;
-                    }
-                    else
-                    {
+                        //if there is none, create one
                         //else create one
-                        let post = await channel.send(sellerpost);
-                        client.post = post;
+                        post = await channel.send(sellerpost);
                         post.pin();                
                     }
+                    posts.set(server.guildid, post);
+                    sellers.set(server.guildid, []);
+                    buyers.set(server.guildid, []);
                 }
     
-                client.emit('sellerUpdate', client);    
+                client.emit('priceUpdate', server.guildid);    
             }
         }
         

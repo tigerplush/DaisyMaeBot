@@ -20,12 +20,13 @@ for (const file of commandFiles) {
 	bot.commands.set(command.name, command);
 }
 
-bot.sellers = [];
-bot.buyers = [];
+bot.sellers = new Discord.Collection();
+bot.buyers = new Discord.Collection();
+bot.posts = new Discord.Collection();
 
-bot.on('priceUpdate', () =>
+bot.on('priceUpdate', function(guildid)
 {
-    update.execute(bot);
+    update.execute({client: bot, guildid: guildid});
 });
 
 bot.on('ready', () => {

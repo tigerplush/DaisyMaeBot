@@ -5,6 +5,7 @@ module.exports =
     description: "Sets the current price I sell turnips for",
     execute(message, args)
     {
+
         if(args.length != 1)
         {
             message.reply("please specify a price for your turnips - and only a price!");
@@ -18,8 +19,8 @@ module.exports =
             return;
         }        
 
-        //Search for author
-        const {buyers} = message.client;
+        //Search for author        
+        const buyers = message.client.buyers.get(message.guild.id);
         let buyer = buyers.find(price => price.owner == message.author)
         if(buyer)
         {
@@ -38,6 +39,6 @@ module.exports =
             message.reply("I added you to the list of buyers");
         }
 
-        message.client.emit('priceUpdate', message.client);
+        message.client.emit('priceUpdate', message.guild.id);
     },
 };

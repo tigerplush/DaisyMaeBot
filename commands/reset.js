@@ -5,7 +5,8 @@ module.exports =
     description: "Resets your current turnip price and removes you from the list of sellers",
     execute(message, args)
     {
-        const {sellers, buyers} = message.client;
+        const sellers = message.client.sellers.get(message.guild.id);
+        const buyers = message.client.buyers.get(message.guild.id);
 
         //Search for author
         let index = sellers.findIndex(price => price.owner === message.author);
@@ -20,6 +21,6 @@ module.exports =
             message.reply("I have removed you from the list of buyers :slight_smile:");
         }
 
-        message.client.emit('priceUpdate', message.client);
+        message.client.emit('priceUpdate', message.guild.id);
     },
 };
