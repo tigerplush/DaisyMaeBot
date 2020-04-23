@@ -21,7 +21,7 @@ module.exports =
         let content = sellerpost + "\n";
         if(!sellers || sellers.length == 0)
         {
-            content += "There are no active sellers :frowning2:";
+            content += "There are no active users where you can sell turnips :frowning2:";
         }
         else
         {
@@ -30,7 +30,7 @@ module.exports =
             sellers.sort(function(a, b){
                 return b.price-a.price
             });
-            content += "**__Active sellers:__**";
+            content += "**__Active users where you can sell turnips:__**";
             sellers.forEach(seller => {
                 content += "\n<@" + seller.owner.id + "> with " + seller.price + " bells per turnip";
             });
@@ -41,7 +41,7 @@ module.exports =
         const buyers = client.buyers.get(guildid);
         if(!buyers || buyers.length == 0)
         {
-            content += "There are no active buyers :frowning2:";
+            content += "There are no active users where you can buy turnips :frowning2:";
         }
         else
         {
@@ -50,7 +50,7 @@ module.exports =
             buyers.sort(function(a, b){
                 return a.price-b.price
             });
-            content += "**__Active buyers:__**";
+            content += "**__Active users where you can buy turnips:__**";
             buyers.forEach(buyer => {
                 content += "\n<@" + buyer.owner.id + "> with " + buyer.price + " bells per turnip";
             });
