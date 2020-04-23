@@ -21,8 +21,9 @@ for (const file of commandFiles) {
 }
 
 bot.sellers = [];
+bot.buyers = [];
 
-bot.on('sellerUpdate', () =>
+bot.on('priceUpdate', () =>
 {
     update.execute(bot);
 });

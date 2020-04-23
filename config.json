@@ -1,6 +1,6 @@
 {
     "prefix": "!daisy ",
-    "sellerpost": "This is the seller board.",
+    "sellerpost": "**__This is the seller/buyer board.__**",
     "servers": [
         {
             "guildid": "575030619747385345",

@@ -1,8 +1,8 @@
 module.exports =
 {
-    name: "sell",
+    name: "buy",
     usage: "turnip-price",
-    description: "Sets the current price Tommy and Timmy buy turnips for",
+    description: "Sets the current price I sell turnips for",
     execute(message, args)
     {
         if(args.length != 1)
@@ -16,26 +16,26 @@ module.exports =
         {
             message.reply("Please enter a valid price :slight_frown:");
             return;
-        }
-        
-        //Search for author        
-        const {sellers} = message.client;
-        let seller = sellers.find(price => price.owner == message.author)
-        if(seller)
+        }        
+
+        //Search for author
+        const {buyers} = message.client;
+        let buyer = buyers.find(price => price.owner == message.author)
+        if(buyer)
         {
             // the author already exists
-            seller.price = args[0];
+            buyer.price = args[0];
             message.reply("I've updated your turnip price");
         }
         else
         {
             //add new author with the price
-            seller = {
+            buyer = {
                 "owner": message.author,
                 "price": args[0]
             }
-            sellers.push(seller);
-            message.reply("I added you to the list of sellers");
+            buyers.push(buyer);
+            message.reply("I added you to the list of buyers");
         }
 
         message.client.emit('priceUpdate', message.client);

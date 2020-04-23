@@ -5,19 +5,21 @@ module.exports =
     description: "Resets your current turnip price and removes you from the list of sellers",
     execute(message, args)
     {
-        const {sellers} = message.client;
+        const {sellers, buyers} = message.client;
 
         //Search for author
-        const index = sellers.findIndex(price => price.owner === message.author);
+        let index = sellers.findIndex(price => price.owner === message.author);
         if (index > -1) {
             sellers.splice(index, 1);
             message.reply("I have removed you from the list of sellers :slight_smile:");
         }
-        else
-        {
-            message.reply("I couldn't find you on the list of sellers :slight_frown:");
+
+        index = buyers.findIndex(price => price.owner === message.author);
+        if (index > -1) {
+            buyers.splice(index, 1);
+            message.reply("I have removed you from the list of buyers :slight_smile:");
         }
 
-        message.client.emit('sellerUpdate', message.client);
+        message.client.emit('priceUpdate', message.client);
     },
 };
