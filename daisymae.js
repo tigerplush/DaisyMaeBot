@@ -27,7 +27,7 @@ bot.on('sellerUpdate', () =>
     update.execute(bot);
 });
 
-bot.on("ready", () => {
+bot.on('ready', () => {
     //console.log(bot);
     initFromConfig.execute(bot);
 });

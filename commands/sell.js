@@ -22,7 +22,7 @@ module.exports =
         if(seller)
         {
             // the author already exists
-            seller.price = args[0]
+            seller.price = args[0];
             message.reply("I've updated your turnip price");
         }
         else
